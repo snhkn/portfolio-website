@@ -1,3 +1,4 @@
+import pandas
 import streamlit as st
 
 st.set_page_config(layout="wide")
@@ -18,3 +19,15 @@ with col2:
         Thank you for your interest! Feel free to explore and learn more about my skills and experiences.
         """
     st.info(content)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv",sep=";")
+
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
